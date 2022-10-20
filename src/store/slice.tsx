@@ -21,13 +21,13 @@ const initialState:weatherState ={
 
 
 export const locationFetcher:any=createAsyncThunk("cityfetcher/name",async(name)=>{
-    const data=await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=5&appid=${myApi}`)
+    const data=await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=5&appid=${myApi}`)
     const result=await data.json()
     return [result[0].lat,result[0].lon,result[0].name]
 })
 
 export const weatherFetcher:any=createAsyncThunk("weatherfetcher/name",async(x:any[])=>{
-    const data=await fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${x[0]}&lon=${x[1]}&appid=${myApi}`)
+    const data=await fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${x[0]}&lon=${x[1]}&appid=${myApi}`)
     const result=await data.json()
     console.log(result)
     return result
